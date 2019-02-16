@@ -96,7 +96,9 @@
             lists = document.getElementsByTagName('a'),
             id = 0,
             timeId = setTimeout(log, 100)
-
+            for (let i = 0; i < lists.length; i++) {
+            	lists[i].style.marginLeft = -300 + 'px'
+            }
         function log () {
         	if (!this.rotator) { lists[id].classList.add('animaLists')
         	id++
