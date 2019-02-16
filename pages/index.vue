@@ -15,9 +15,17 @@
 		</div>
 	</div>
 		</div>
-		<div @click="onBodyClick()">
+		<div @click="onBodyClick()" v-scroll="ff">
 			<div id="firstContent">
 				<button style="">fd</button>
+			</div>
+			<div id="secondContent">
+				<div v-for="icon in icons" class="secondContentItem">
+					<i class="material-icons" style="height: 100px; color: red; width: 100px">{{ icon.icon }}</i>
+					<div>
+						<p>{{ icon.text }}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -26,11 +34,12 @@
 <script>
 	import Navbar from './navbar'
 	import Drawer from './drawer'
+	import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 	export default {
 		components: {
 			appNavbar: Navbar,
-			appDrawer: Drawer
+			appDrawer: Drawer,
 		},
 		data () {
 			return {
@@ -49,10 +58,33 @@
 					'Our',
 					'His',
 					'Her'
+				],
+				icons: [
+					{
+						icon: 'lock',
+						text: 'sasa'
+					},
+					{
+						icon: 'person',
+						text: 'sasa'
+					},
+					{
+						icon: 'bug_report',
+						text: 'sasa'
+					}
 				]
 			}
 		},
 		methods: {
+			ff () {
+				const elem = document.getElementById('secondContent')
+				const postop = elem.getBoundingClientRect().top;
+				if (postop + elem.clientHeight <= window.innerHeight && postop >= 0) {
+					elem.classList.add('visible')
+				} else {
+					elem.classList.remove('visible')
+				}
+			},
 			burgerClick () {
 				this.rotator = !this.rotator
         let burger = document.getElementById('brgr'),
@@ -119,11 +151,28 @@
 			this.heightBlock = window.innerHeight
 			document.getElementById('blocked').style.height = this.heightBlock + 'px'
 			document.getElementById('firstContent').style.height = this.heightBlock + 'px'
+			document.getElementById('secondContent').style.height = this.heightBlock * 0.7 + 'px'
 		}
 	}
 </script>
 
 <style scoped>
+#secondContent {
+	border: 1px solid black;
+	margin: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+}
+.secondContentItem {
+	text-align: center;
+	padding: 10px;
+	border: 1px solid black;
+}
+#secondContent.visible {
+	border: 1px solid blue 
+}
 .tr {
 		animation-name: ss;
 		animation-duration: 1s;

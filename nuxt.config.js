@@ -26,5 +26,6 @@ module.exports = {
   ],
   workbox: {
     
-  }
+  },
+  plugins: ['~/plugins/scrollable.js']
 }
