@@ -27,6 +27,9 @@
 					</div>
 				</div>
 			</div>
+			<div id="thirdContent">
+				
+			</div>
 		</div>
 	</div>
 </template>
@@ -151,7 +154,6 @@
 			this.heightBlock = window.innerHeight
 			document.getElementById('blocked').style.height = this.heightBlock + 'px'
 			document.getElementById('firstContent').style.height = this.heightBlock + 'px'
-			document.getElementById('secondContent').style.height = this.heightBlock * 0.7 + 'px'
 		}
 	}
 </script>
@@ -169,6 +171,8 @@
 	text-align: center;
 	padding: 10px;
 	border: 1px solid black;
+	margin: 30px;
+	flex-basis: 10%
 }
 #secondContent.visible {
 	border: 1px solid blue 
