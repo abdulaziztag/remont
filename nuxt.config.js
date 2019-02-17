@@ -27,5 +27,17 @@ module.exports = {
   workbox: {
     
   },
-  plugins: ['~/plugins/scrollable.js']
+  plugins: [
+    {
+      src: '~/plugins/scrollable.js',
+      ssr: true
+    },
+    {
+      src: '~/plugins/swiper.js',
+      ssr: false
+    }
+  ],
+  css: [
+    'swiper/dist/css/swiper.css'
+  ]
 }
